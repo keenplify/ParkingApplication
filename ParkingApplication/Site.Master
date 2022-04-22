@@ -14,7 +14,7 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
     <form runat="server">
@@ -62,10 +62,13 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> -<i data-feather="mouse-pointer"></i> Application</p>
             </footer>
         </div>
 
     </form>
+    <script>
+      feather.replace()
+    </script>
 </body>
 </html>
