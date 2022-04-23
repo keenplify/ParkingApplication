@@ -42,5 +42,51 @@ namespace ParkingApplication.Helpers
 
             return user;
         }
+
+        public static Dictionary<string, object> AutoLogin(bool redirect=true)
+        {
+            if (!Cookie.CookieExist("user", "username") || !Cookie.CookieExist("user", "password")) return null;
+            try
+            {
+                var user = Login(Cookie.GetFromCookie("user", "username"), Cookie.GetFromCookie("user", "password"));
+                return user;
+            }
+            catch(Exception)
+            {
+                Logout();
+                if (redirect) HttpContext.Current.Response.Redirect("/");
+                return null;
+            }
+        }
+
+        public static void LoginRedirect()
+        {
+            Dictionary<string, object> user = AutoLogin();
+            
+            if (user == null)
+            {
+                Logout();
+            }
+        }
+
+        public static void LoginWithRedirect()
+        {
+            Dictionary<string, object> user = AutoLogin();
+
+            if (user["TYPE"].ToString() == "ADMIN")
+            {
+                HttpContext.Current.Response.Redirect("~/adminDashboard");
+            }
+            else
+            {
+                HttpContext.Current.Response.Redirect("~/userDashboard");
+            }
+        }
+
+        public static void Logout()
+        {
+            Cookie.RemoveCookie("user", "username", null);
+            Cookie.RemoveCookie("user", "password", null);
+        }
     }
 }
