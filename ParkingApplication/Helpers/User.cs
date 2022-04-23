@@ -45,7 +45,12 @@ namespace ParkingApplication.Helpers
 
         public static Dictionary<string, object> AutoLogin(bool redirect=true)
         {
-            if (!Cookie.CookieExist("user", "username") || !Cookie.CookieExist("user", "password")) return null;
+            if (!Cookie.CookieExist("user", "username") || !Cookie.CookieExist("user", "password"))
+            {
+                Logout();
+                if (redirect) HttpContext.Current.Response.Redirect("/");
+                return null;
+            }
             try
             {
                 var user = Login(Cookie.GetFromCookie("user", "username"), Cookie.GetFromCookie("user", "password"));
