@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace ParkingApplication.Helpers
+{
+    public class Connection
+    {
+        public static string SERVICENAME = "xe";
+        public static string USERID = "SYSTEM";
+        public static string PASSWORD = "";
+    }
+}

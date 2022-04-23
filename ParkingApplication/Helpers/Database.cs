@@ -10,10 +10,7 @@ namespace ParkingApplication.Helpers
     {
         public static OracleConnection Connect()
         {
-            string SERVICENAME = "xe";
-            string USERID = "SYSTEM";
-            string PASSWORD = "*8*S5Kz2drNc";
-            string ConnectString = $"data source=(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = {SERVICENAME})));USER ID={USERID};PASSWORD={PASSWORD}";
+            string ConnectString = $"data source=(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = {Connection.SERVICENAME})));USER ID={Connection.USERID};PASSWORD={Connection.PASSWORD}";
 
             OracleConnection connection = new OracleConnection(ConnectString);
 
