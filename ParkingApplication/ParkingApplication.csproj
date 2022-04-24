@@ -314,6 +314,7 @@
     </Compile>
     <Compile Include="Helpers\Connection.cs" />
     <Compile Include="Helpers\Cookie.cs" />
+    <Compile Include="Helpers\Transaction.cs" />
     <Compile Include="Helpers\User.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
