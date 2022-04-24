@@ -5,14 +5,20 @@
         <div class="card">
         <div class="card-header" id="headingOne">
             <h5 class="mb-0">
-            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <button type="button" class="btn btn-link <%= (lblPasswordError.Text.Length > 0) ? "collapsed":""%>" data-toggle="collapse" data-target="#collapseEditUserDetails" aria-expanded="true" aria-controls="collapseOne">
                 Edit User Account Details
             </button>
             </h5>
         </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div id="collapseEditUserDetails" class="collapse  <%= (lblPasswordError.Text.Length > 0) ? "":"show"%>" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
+                <% if (lblEditUserError.Text.Length > 0)
+                    { %>
+                <div class="alert alert-danger">
+                    <asp:Label runat="server" ID="lblEditUserError"/>
+                </div>
+                <%} %>
                 <asp:Panel runat="server" ID="pnlEditUser" DefaultButton="btnEditUser">
                     <div class="container" style="max-width: 576px">
                         <div class="row">
@@ -49,28 +55,69 @@
         <div class="card">
         <div class="card-header" id="headingTwo">
             <h5 class="mb-0">
-            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Collapsible Group Item #2
+            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEditUsername" aria-expanded="false" aria-controls="collapseTwo">
+                Edit Username
             </button>
             </h5>
         </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div id="collapseEditUsername" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                <% if (lblUsernameError.Text.Length > 0)
+                    { %>
+                <div class="alert alert-danger">
+                    <asp:Label runat="server" ID="lblUsernameError"/>
+                </div>
+                <%} else { %>
+                <div class="alert alert-info">
+                    Your account will be forcibly logged out when you changed your username.
+                </div>
+                <%} %>
+                <asp:Panel runat="server" ID="pnlEditUsername" DefaultButton="btnEditUsername">
+                    <div class="container" style="max-width: 576px">
+                        <div class="form-group">
+                            <label class="font-weight-bold">New Username</label>
+                            <asp:TextBox runat="server" ID="username" placeholder="Username" CssClass="form-control"/>
+                        </div>
+                        <asp:Button runat="server" ID="btnEditUsername" Text="Update Username" CssClass="btn btn-primary" OnClick="btnEditUsername_Click"/>
+                    </div>
+                </asp:Panel>
             </div>
         </div>
         </div>
         <div class="card">
         <div class="card-header" id="headingThree">
             <h5 class="mb-0">
-            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Collapsible Group Item #3
+            <button type="button" class="btn btn-link <%= (lblPasswordError.Text.Length > 0) ? "":"collapsed"%>" data-toggle="collapse" data-target="#collapseEditPassword" aria-expanded="false" aria-controls="collapseThree">
+                Edit Password
             </button>
             </h5>
         </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div id="collapseEditPassword" class="collapse <%= (lblPasswordError.Text.Length > 0) ? "show":""%>" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                
+                <% if (lblPasswordError.Text.Length > 0)
+                    { %>
+                <div class="alert alert-danger">
+                    <asp:Label runat="server" ID="lblPasswordError"/>
+                </div>
+                <%} else { %>
+                <div class="alert alert-info">
+                    Your account will be forcibly logged out when you changed your password.
+                </div>
+                <%} %>
+                <asp:Panel runat="server" ID="pnlEditPassword" DefaultButton="btnEditPassword">
+                    <div class="container" style="max-width: 576px">
+                        <div class="form-group">
+                            <label class="font-weight-bold">New Password</label>
+                            <asp:TextBox runat="server" ID="newPassword" placeholder="New Password" type="password" CssClass="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold">Retype New Password</label>
+                            <asp:TextBox runat="server" ID="newPasswordRetype" placeholder="Retype New Password" type="password" CssClass="form-control"/>
+                        </div>
+                        <asp:Button runat="server" ID="btnEditPassword" Text="Update Username" CssClass="btn btn-primary" OnClick="btnEditPassword_Click"/>
+                    </div>
+                </asp:Panel>
             </div>
         </div>
         </div>
