@@ -46,7 +46,7 @@ namespace ParkingApplication.Helpers
                 $"'{Guid.NewGuid()}'," +
                 $"'{createdBy}'" +
                 $"'{parkingNo}'," +
-                $"'{ConvertToTimestamp(startingDate)}'," +
+                $"'{Time.ConvertToTimestamp(startingDate)}'," +
                 $"'{hoursDuration}')";
 
             OracleCommand cmd = new OracleCommand(query, connection);
@@ -54,10 +54,6 @@ namespace ParkingApplication.Helpers
             cmd.ExecuteNonQuery();
         }
 
-        public static long ConvertToTimestamp(DateTime value)
-        {
-            long epoch = (value.Ticks - 621355968000000000) / 10000000;
-            return epoch;
-        }
+        
     }
 }
