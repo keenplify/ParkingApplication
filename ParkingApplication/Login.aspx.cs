@@ -20,11 +20,11 @@ namespace ParkingApplication
             try
             {
                 Dictionary<string, object> user = Helpers.User.Login(username.Text, password.Text);
-                System.Diagnostics.Debug.Write(user["GUID"]);
+                Response.Redirect("/");
             }
             catch (InvalidOperationException error)
             {
-                System.Diagnostics.Debug.WriteLine(error.Message);
+                lblError.Text = error.Message;
             }
         }
     }

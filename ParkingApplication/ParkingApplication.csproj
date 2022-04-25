@@ -141,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Adminviewparking.aspx" />
+    <Content Include="EditUser.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -288,10 +291,8 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
     <Compile Include="Adminviewparking.aspx.cs">
       <DependentUpon>Adminviewparking.aspx</DependentUpon>
-=======
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="VPU.aspx.cs">
       <DependentUpon>VPU.aspx</DependentUpon>
@@ -303,7 +304,6 @@
     <None Include="Helpers\Connection.cs.Example" />
     <Compile Include="EditUser.aspx.cs">
       <DependentUpon>EditUser.aspx</DependentUpon>
->>>>>>> Stashed changes
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Adminviewparking.aspx.designer.cs">
@@ -311,7 +311,19 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <None Include="Helpers\Connection.cs.Example" />
+    <Compile Include="EditUser.aspx.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditUser.aspx.designer.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Connection.cs" />
+    <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\Cookie.cs" />
+    <Compile Include="Helpers\Time.cs" />
+    <Compile Include="Helpers\Transaction.cs" />
     <Compile Include="Helpers\User.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

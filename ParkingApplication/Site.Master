@@ -5,8 +5,11 @@
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Anton&family=BIZ+UDPMincho&family=Bebas+Neue&family=Fjalla+One&family=Heebo:wght@700&family=Inter:wght@600&family=Open+Sans:ital,wght@1,300&family=Oswald:wght@200&family=PT+Sans+Narrow:wght@700&family=Roboto:ital,wght@0,300;1,900&family=Teko:wght@300&display=swap" rel="stylesheet">
+    <title><%: Page.Title %> - Online Parking Website</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -37,32 +40,60 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+          <a class="navbar-brand" href="/">Parking Application</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav m-auto">
+           
+              <% if (user != null)
+                  { %>
+                <div class="nav-item p-1">
+                    <a class="nav-link btn btn-primary btn-sm text-white" role="button" aria-pressed="true" href="/AddBooking"><i data-feather="plus-circle" class="text-white p-1"></i>Add Booking</a> 
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
+                <div class="nav-item p-1">
+                    <a class="nav-link btn btn-success btn-sm text-white" role="button" aria-pressed="true" href="/MyBookings"><i data-feather="external-link" class="text-white p-1"></i>My Bookings</a> 
                 </div>
-            </div>
-        </div>
+                <% } %>
+                 </div>
+
+              <div class="navbar-nav  text-end">
+                <div class="nav-item dropdown">
+                    <% if (user != null) {%>
+                        <a class="nav-link dropdown-toggle text-end" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span><i data-feather="user" class="text-white"></i> <%=user["FIRST_NAME"] %> <%=user["LAST_NAME"] %> </span>
+                        </a>
+
+                        <div class="dropdown-menu bg-dark " aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-white" href="/EditUser"><i data-feather="settings" class="text-white p-1"></i>Account Settings</a>      
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item text-white" runat="server" id="btnLogout" onserverclick="Logout">
+                                <i data-feather="log-out" class="text-white p-1"></i>Logout
+                            </button>
+                        </div>
+                    <% } else { %>
+                        <a class="nav-link text-end" href="/Login" role="button">
+                            <span>Login</span>
+                        </a>
+                    <%} %>
+                </div>
+              </div>
+              </div>
+         </div>
+        </nav>
+             
+    
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> -<i data-feather="mouse-pointer"></i> Application</p>
+                <p><i data-feather="mouse-pointer"></i> Application</p>
             </footer>
         </div>
 
