@@ -88,6 +88,33 @@ namespace ParkingApplication.Helpers
             }
         }
 
+        public static Dictionary<string, object> Register(string first_name, string last_name, string phone_number, string gender, string username, string password, string type="USER")
+        {
+            var query = $"INSERT INTO USERS_TBL (" +
+                $"GUID," +
+                $"FIRST_NAME," +
+                $"LAST_NAME," +
+                $"PHONE_NUMBER," +
+                $"GENDER," +
+                $"USERNAME," +
+                $"PASSWORD," +
+                $"TYPE) VALUES (" +
+                $"'{Guid.NewGuid()}'," +
+                $"'{first_name}'," +
+                $"'{last_name}'," +
+                $"'{phone_number}'," +
+                $"'{gender}'," +
+                $"'{username}'," +
+                $"'{BCrypt.Net.BCrypt.HashPassword(password, 10)}'," +
+                $"'{type}')";
+            OracleConnection connection = Database.Connect();
+
+            OracleCommand cmd = new OracleCommand(query, connection);
+            cmd.ExecuteNonQuery();
+
+            return Login(username, password);
+        }
+
         public static void Logout()
         {
             Cookie.RemoveCookie("user", "username", null);
