@@ -115,7 +115,7 @@
                             <label class="font-weight-bold">Retype New Password</label>
                             <asp:TextBox runat="server" ID="newPasswordRetype" placeholder="Retype New Password" type="password" CssClass="form-control"/>
                         </div>
-                        <asp:Button runat="server" ID="btnEditPassword" Text="Update Username" CssClass="btn btn-primary" OnClick="btnEditPassword_Click"/>
+                        <asp:Button runat="server" ID="btnEditPassword" Text="Update Password" CssClass="btn btn-primary" OnClick="btnEditPassword_Click"/>
                     </div>
                 </asp:Panel>
             </div>
