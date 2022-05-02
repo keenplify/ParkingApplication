@@ -67,7 +67,7 @@
 
               <div class="navbar-nav  text-end">
                 <% if (user != null) {%>
-                    <div class="nav-item">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-end" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span><i data-feather="user" class="text-white"></i> <%=user["FIRST_NAME"] %> <%=user["LAST_NAME"] %> </span>
                         </a>
@@ -79,7 +79,7 @@
                                 <i data-feather="log-out" class="text-white p-1"></i>Logout
                             </button>
                         </div>
-                    </div>
+                    </li>
                 <% } else { %>
                     <div class="nav-item">
                         <a class="nav-link" href="/Login" role="button">
