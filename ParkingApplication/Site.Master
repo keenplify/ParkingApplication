@@ -18,6 +18,9 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Anton&family=BIZ+UDPMincho&family=Bebas+Neue&family=Fjalla+One&family=Heebo:wght@700&family=Inter:wght@600&family=Open+Sans:ital,wght@1,300&family=Oswald:wght@200&family=PT+Sans+Narrow:wght@700&family=Roboto:ital,wght@0,300;1,900&family=Teko:wght@300&display=swap" rel="stylesheet">  
 </head>
 <body>
     <form runat="server">
@@ -63,8 +66,8 @@
                  </div>
 
               <div class="navbar-nav  text-end">
-                <div class="nav-item dropdown">
-                    <% if (user != null) {%>
+                <% if (user != null) {%>
+                    <div class="nav-item">
                         <a class="nav-link dropdown-toggle text-end" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span><i data-feather="user" class="text-white"></i> <%=user["FIRST_NAME"] %> <%=user["LAST_NAME"] %> </span>
                         </a>
@@ -76,12 +79,19 @@
                                 <i data-feather="log-out" class="text-white p-1"></i>Logout
                             </button>
                         </div>
-                    <% } else { %>
-                        <a class="nav-link text-end" href="/Login" role="button">
+                    </div>
+                <% } else { %>
+                    <div class="nav-item">
+                        <a class="nav-link" href="/Login" role="button">
                             <span>Login</span>
                         </a>
-                    <%} %>
-                </div>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="/Register" role="button">
+                            <span>Register</span>
+                        </a>
+                    </div>
+                <%} %>
               </div>
               </div>
          </div>
