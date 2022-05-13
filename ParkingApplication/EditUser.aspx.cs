@@ -33,7 +33,8 @@ namespace ParkingApplication
                 $"FIRST_NAME='{firstName.Text}'," +
                 $"LAST_NAME='{lastName.Text}'," +
                 $"PHONE_NUMBER='{phoneNumber.Text}'," +
-                $"GENDER='{gender.Text}'";
+                $"GENDER='{gender.Text}' "+
+                $"WHERE GUID={user["GUID"]}";
 
             OracleCommand cmd = new OracleCommand(query, connection);
             cmd.ExecuteNonQuery();
@@ -48,7 +49,8 @@ namespace ParkingApplication
                 OracleConnection connection = Helpers.Database.Connect();
 
                 string query = $"UPDATE users_tbl SET " +
-                    $"USERNAME='{username.Text}'";
+                    $"USERNAME='{username.Text}' " +
+                    $"WHERE GUID={user["GUID"]}";
 
                 OracleCommand cmd = new OracleCommand(query, connection);
                 cmd.ExecuteNonQuery();
@@ -75,10 +77,11 @@ namespace ParkingApplication
             {
                 OracleConnection connection = Helpers.Database.Connect();
 
-                var hash = BCrypt.Net.BCrypt.HashPassword(username.Text, 10);
+                var hash = BCrypt.Net.BCrypt.HashPassword(newPassword.Text, 10);
 
                 string query = $"UPDATE users_tbl SET " +
-                    $"PASSWORD='{hash}'";
+                    $"PASSWORD='{hash}' " +
+                    $"WHERE GUID={user["GUID"]}";
 
                 OracleCommand cmd = new OracleCommand(query, connection);
                 cmd.ExecuteNonQuery();
