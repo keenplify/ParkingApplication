@@ -46,7 +46,7 @@ namespace ParkingApplication.Helpers
                 $"'{Guid.NewGuid()}'," +
                 $"'{createdBy}'" +
                 $"'{parkingNo}'," +
-                $"'{Time.ConvertToTimestamp(startingDate)}'," +
+                $"'{Time.ConvertToUnixTimestamp(startingDate)}'," +
                 $"'{hoursDuration}')";
 
             OracleCommand cmd = new OracleCommand(query, connection);

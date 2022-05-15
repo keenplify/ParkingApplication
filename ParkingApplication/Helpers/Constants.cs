@@ -7,7 +7,7 @@ namespace ParkingApplication.Helpers
 {
     public class Constants
     {
-        public static int PARKING_NO_COUNT = 6;
+        public static int PARKING_NO_COUNT = 12;
        
     }
 }

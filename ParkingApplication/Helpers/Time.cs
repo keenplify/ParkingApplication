@@ -7,10 +7,28 @@ namespace ParkingApplication.Helpers
 {
     public class Time
     {
-        public static long ConvertToTimestamp(DateTime value)
+        
+        public static long ConvertToUnixTimestamp(DateTime value)
         {
             long epoch = (value.Ticks - 621355968000000000) / 10000000;
             return epoch;
+        }
+
+        public static DateTime UnixTimeStampToDateTime(double unixTime)
+        {
+            DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
+            return new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
+        }
+
+        public static string ToHumanTimeString(TimeSpan span, int significantDigits = 3)
+        {
+            var format = "G" + significantDigits;
+            return span.TotalMilliseconds < 1000 ? span.TotalMilliseconds.ToString(format) + " milliseconds"
+                : (span.TotalSeconds < 60 ? span.TotalSeconds.ToString(format) + " seconds"
+                    : (span.TotalMinutes < 60 ? span.TotalMinutes.ToString(format) + " minutes"
+                        : (span.TotalHours < 24 ? span.TotalHours.ToString(format) + " hours"
+                                                : span.TotalDays.ToString(format) + " days")));
         }
 
         public static List<int> CalculateDisabledParkingNos(List<Dictionary<string, object>> transactions, int hoursDuration)
@@ -38,5 +56,7 @@ namespace ParkingApplication.Helpers
 
             return disabledParkingNos;
         }
+
+
     }
 }

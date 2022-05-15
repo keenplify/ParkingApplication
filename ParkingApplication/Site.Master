@@ -60,9 +60,15 @@
                     <a class="nav-link btn btn-primary btn-sm text-white" role="button" aria-pressed="true" href="/AddBooking"><i data-feather="plus-circle" class="text-white p-1"></i>Add Booking</a> 
                 </div>
                 <div class="nav-item p-1">
-                    <a class="nav-link btn btn-success btn-sm text-white" role="button" aria-pressed="true" href="/MyBookings"><i data-feather="external-link" class="text-white p-1"></i>My Bookings</a> 
+                    <a class="nav-link btn btn-success btn-sm text-white" role="button" aria-pressed="true" href="/VPU"><i data-feather="external-link" class="text-white p-1"></i>My Bookings</a> 
                 </div>
-                <% } %>
+                <% if (user["TYPE"].ToString() == "ADMIN")
+                    { %>
+                <div class="nav-item p-1">
+                    <a class="nav-link btn btn-info btn-sm text-white" role="button" aria-pressed="true" href="/VPA"><i data-feather="list" class="text-white p-1"></i>All Bookings</a> 
+                </div>
+                <% }
+                    } %>
                  </div>
 
               <div class="navbar-nav  text-end">

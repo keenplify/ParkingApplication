@@ -1,53 +1,41 @@
-﻿<%@ Page Title="Edit Account" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="VPU.aspx.cs" Inherits="ParkingApplication.VPU" %>
+﻿<%@ Page Title="My Bookings" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="VPU.aspx.cs" Inherits="ParkingApplication.VPU" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server"> 
-    <table class="table table-hover table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Parking Slot</th>
-      <th scope="col">Name</th>
-      <th scope="col">Time Left</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>1</td>
-      <td>Ruben Sandique</td>
-      <td>
+    <h3 class="text-center">
+        Your Bookings
+    </h3>
+    <table class="table table-hover table table-bordered text-center">
+        <thead>
+            <tr>
+                <th scope="col">Parking Slot</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Hours Duration</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% foreach (var transaction in transactions)
+                { %>
+            <tr>
+                <td><%=transaction["PARKING_NO"] %></td>
+                <td><%=transaction["minDate"] %></td>
+                <td><%=transaction["HOURS_DURATION"] %> hours</td>
+                <td class="d-flex align-items-center justify-content-center">
+                    <% if ((bool)transaction["isActive"])
+                        { %>
+                        <div class="mr-2">
+                            Time Left:
+                        </div>
+                        <div class="badge badge-primary p-2">
+                            <%=transaction["timeLeft"] %>
+                        </div>
+                    <%} else { %>
+                        <div class="badge badge-secondary">INACTIVE</div>
+                    <%} %>
+                </td>
+            </tr>
+            <%} %>
+        </tbody>
+    </table>
 
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display the result in the element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
-
-</script>
-      </td>
-    </tr>
 </asp:Content>

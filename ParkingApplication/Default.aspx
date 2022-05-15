@@ -6,18 +6,19 @@
             font-family: 'Roboto', sans-serif;
             font-weight: bold;  
         }
-        header{
-            background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("img/1.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
 
-
+        .hero {
+            background: #0F2027;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            border-radius: 1em;
+            overflow: hidden;
         }
     </style>
 
     <header>
 
-             <div class="container-fluid  text-center text-white">
+             <div class="container-fluid  text-center text-white hero shadow mb-5">
                  <br>
                  <br>
                  <br> 
@@ -25,7 +26,6 @@
                  <h1>Online Automated Parking System</h1>
                  <p class="text-center ">Smart parking technology has enhanced productivity, decreased operating expenses, <br> increased facility value, and done so much more.</p>
                   <p class="py-4">
-                  <a  class=" btn btn-primary  text-white" role="button" aria-pressed="true" href="#"><i data-feather="plus-circle" class="text-white p-1"></i>Add Booking</a>
             </p>
                  <br> 
                  <br> 
@@ -38,7 +38,7 @@
           
         <div class="container col-md-6">
           
-            <h1 class=" mt-5    ">Parking Your Vechicle Quick</h1>
+            <h1>Parking Your Vechicle Quick</h1>
             <p>
                Parking reservation system refers to a system designed to assist individuals in booking automobile (vehicle) parking spaces online. The technology is notable for quickly improving the website by allowing consumers to book parking spaces, access extra services, and even pay online. Customers may secure parking spots from the convenience of their own home or while on the road. 
             </p>
