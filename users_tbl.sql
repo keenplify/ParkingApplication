@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - Monday-May-02-2022   
+--  File created - Monday-May-16-2022   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table USERS_TBL
@@ -24,9 +24,9 @@
    COMMENT ON COLUMN "SYSTEM"."USERS_TBL"."TYPE" IS 'Enum USER or ADMIN';
 REM INSERTING into SYSTEM.USERS_TBL
 SET DEFINE OFF;
-Insert into SYSTEM.USERS_TBL (GUID,FIRST_NAME,LAST_NAME,PHONE_NUMBER,GENDER,USERNAME,PASSWORD,TYPE) values ('d79fc601-9a4f-433f-808f-2bae11a2186e','Tester','User','09062281049','FEMALE','testuser','$2y$10$MbtiLiysA15cFjrHIRTIpOIzuQvXWIvmbvBgcNfJZxvaIr30XXptu','ADMIN');
-Insert into SYSTEM.USERS_TBL (GUID,FIRST_NAME,LAST_NAME,PHONE_NUMBER,GENDER,USERNAME,PASSWORD,TYPE) values ('c585d9f6-a967-4790-9461-c4cf52f8a3fd','John','Doe','09062281050','MALE','testuser','$2y$10$pmaZ57LcW1hyrdYb1z2a5uWx/qExvgp.BI1jn8hkb6isZbFGCeSRu','USER');
-Insert into SYSTEM.USERS_TBL (GUID,FIRST_NAME,LAST_NAME,PHONE_NUMBER,GENDER,USERNAME,PASSWORD,TYPE) values ('557116f3-3cf0-4945-b2cd-e9594659ed9b','Aczell','Florencio','09062281049','MALE','testuser','$2a$10$5qYYuZmBH90goGj7MvSB6OhhAGMP6lJS00WyUBlrNKAFM.0k0aYr.','USER');
+Insert into SYSTEM.USERS_TBL (GUID,FIRST_NAME,LAST_NAME,PHONE_NUMBER,GENDER,USERNAME,PASSWORD,TYPE) values ('d79fc601-9a4f-433f-808f-2bae11a2186e','Tester','User','09062281049','FEMALE','testuser','$2y$10$MbtiLiysA15cFjrHIRTIpOIzuQvXWIvmbvBgcNfJZxvaIr30XXptu','USER');
+Insert into SYSTEM.USERS_TBL (GUID,FIRST_NAME,LAST_NAME,PHONE_NUMBER,GENDER,USERNAME,PASSWORD,TYPE) values ('e4020bc7-ba67-4cec-b820-36dfca85db09','Tester','Admin','09062281049','MALE','testeradmin','$2a$10$Z9ZP.5eQCE4kwmlbMU8KoeHU7yV8IEP.lHuFUPi0DM.uyf1x2fG2i','ADMIN');
+Insert into SYSTEM.USERS_TBL (GUID,FIRST_NAME,LAST_NAME,PHONE_NUMBER,GENDER,USERNAME,PASSWORD,TYPE) values ('abd3e171-e29c-49bb-a566-50504208c061','Tracy','Garcia','09123456789','FEMALE','hotdog','$2a$10$8JAvsSzzqaqHebHEunCnEuyaHn.1tRKOTbW3Or.bKLI63652Lfnsi','USER');
 --------------------------------------------------------
 --  DDL for Index USERS_TBL_PK
 --------------------------------------------------------

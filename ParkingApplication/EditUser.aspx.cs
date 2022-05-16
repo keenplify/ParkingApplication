@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Oracle.ManagedDataAccess.Client;
+using System.Diagnostics;
 
 namespace ParkingApplication
 {
@@ -34,7 +35,8 @@ namespace ParkingApplication
                 $"LAST_NAME='{lastName.Text}'," +
                 $"PHONE_NUMBER='{phoneNumber.Text}'," +
                 $"GENDER='{gender.Text}' "+
-                $"WHERE GUID={user["GUID"]}";
+                $"WHERE GUID='{user["GUID"]}'";
+            Debug.WriteLine(query);
 
             OracleCommand cmd = new OracleCommand(query, connection);
             cmd.ExecuteNonQuery();
@@ -50,7 +52,7 @@ namespace ParkingApplication
 
                 string query = $"UPDATE users_tbl SET " +
                     $"USERNAME='{username.Text}' " +
-                    $"WHERE GUID={user["GUID"]}";
+                    $"WHERE GUID='{user["GUID"]}'";
 
                 OracleCommand cmd = new OracleCommand(query, connection);
                 cmd.ExecuteNonQuery();
@@ -81,7 +83,7 @@ namespace ParkingApplication
 
                 string query = $"UPDATE users_tbl SET " +
                     $"PASSWORD='{hash}' " +
-                    $"WHERE GUID={user["GUID"]}";
+                    $"WHERE GUID='{user["GUID"]}'";
 
                 OracleCommand cmd = new OracleCommand(query, connection);
                 cmd.ExecuteNonQuery();
