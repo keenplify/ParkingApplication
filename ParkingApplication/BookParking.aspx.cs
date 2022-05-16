@@ -11,11 +11,26 @@ namespace ParkingApplication
 {
     public partial class BookParking : System.Web.UI.Page
     {
+        protected Dictionary<string, object> user;
+        protected double pricePerHour = 20;
+        protected double totalPrice;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                var user = Helpers.User.AutoLogin();
+                user = Helpers.User.AutoLogin();
+
+                totalPrice = int.Parse(Request.QueryString["duration"]) * pricePerHour;
+            } catch
+            {
+                Response.Redirect("~/AddBooking?err=BAD_REQUEST");
+            }
+        }
+
+        protected void BookParkingBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
 
                 var connection = Helpers.Database.Connect();
                 var query = new OracleCommand("INSERT INTO TRANSACTIONS_TBL (" +
@@ -23,13 +38,21 @@ namespace ParkingApplication
                     "CREATED_BY, " +
                     "PARKING_NO, " +
                     "STARTING_DATE, " +
-                    "HOURS_DURATION" +
+                    "HOURS_DURATION," +
+                    "METHOD_OF_PAYMENT," +
+                    "PHONE_NUMBER," +
+                    "ACCOUNT_NAME," +
+                    "PRICE" +
                     ") VALUES (" +
                     $"'{Guid.NewGuid()}' , " +
                     $"'{user["GUID"]}' , " +
                     $"'{Request.QueryString["parkingNo"]}' , " +
                     $"'{Request.QueryString["startDate"]}' , " +
-                    $"'{Request.QueryString["duration"]}' " +
+                    $"'{Request.QueryString["duration"]}' ," +
+                    $"'{PaymentMethods.Text}' ," +
+                    $"'{PhoneNumberTbx.Text}' ," +
+                    $"'{AccountNameTbx.Text}' ," +
+                    $"'{totalPrice}'" +
                     ")", connection);
                 query.ExecuteNonQuery();
 
@@ -37,6 +60,7 @@ namespace ParkingApplication
             } catch
             {
                 Response.Redirect("~/AddBooking?err=BAD_REQUEST");
+
             }
         }
     }
